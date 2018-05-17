@@ -62,7 +62,8 @@ Array.from(deckClassElements).forEach(function(element) {
 		// display the card's symbol 
 		element.classList.add('open');
 		// add the card to a *list* of "open" cards
-		openCards += element;
+		openCards.push(element.querySelector('i').className;
+		// openCards += element;
 		// if (openCards.length === 2) {
 		// 	if(openCards[0] === openCards[1]) {
 		// 		console.log('these cards are matched ' + openCards);
