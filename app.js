@@ -53,18 +53,23 @@ function shuffle(array) {
     return array;
 }
 
-//  // *  display the card's symbol 
-// const whenClicked = function() {
-// }
 
- // * set up the event listener for a card. If a card is clicked:
- let deckClassElements = document.getElementsByClassName('card');
- Array.from(deckClassElements).forEach(function(element) {
- 	element.addEventListener('click', function whenClicked() {
- 		element.classList.add('open');
-
- 	});
- });
+let openCards = [];
+// * set up the event listener for a card. If a card is clicked:
+let deckClassElements = document.getElementsByClassName('card');
+Array.from(deckClassElements).forEach(function(element) {
+	element.addEventListener('click', function whenClicked() {
+		// display the card's symbol 
+		element.classList.add('open');
+		// add the card to a *list* of "open" cards
+		openCards += element;
+		// if (openCards.length === 2) {
+		// 	if(openCards[0] === openCards[1]) {
+		// 		console.log('these cards are matched ' + openCards);
+		// 	}
+		// } 
+	});
+});
  // 	
  // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  // *  - if the list already has another card, check to see if the two cards match
