@@ -1,9 +1,9 @@
+// an array to store the class names of the cards 
+let openCards = [];
+// an array to manipulate the cards on the HTML after action
+let currentElements = [];
 
-// Display the cards on the page
-
-/*
-* Create a list that holds all of your cards
-*/
+// Create a list that holds all of your cards
 let cardConfig = [
 'fa fa-diamond',
 'fa fa-diamond',
@@ -24,6 +24,7 @@ let newCardConfig = shuffle(cardConfig);
 const deckClass = document.querySelector('.deck');
 const fragment = document.createDocumentFragment();
 
+// Display the cards on the page
 // iterate through shuffled card list and add them to the document fragment
 newCardConfig.forEach(function(card) {
 	let iElement = document.createElement('i');
@@ -35,7 +36,7 @@ newCardConfig.forEach(function(card) {
 	// append elements in loop to a fragment doc for performace
 	fragment.appendChild(deckClass);
 });
-// append ALL elements after the loop
+// append ALL li elements after the loop
 document.body.appendChild(fragment);
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -53,27 +54,50 @@ function shuffle(array) {
     return array;
 }
 
+function moveCounter() {
 
-let openCards = [];
+}
+
+function matchCheck() {
+	// if the list already has another card, check to see if the two cards match
+	if (openCards.length === 2) {
+	 	if(openCards[0] === openCards[1]) {
+	 		for (let i = 0; i <= currentElements.length; i++) {
+	 			let currentIndex = currentElements[i];
+	 			currentIndex.className += ' match';
+	 		}
+	 		// empty array when done checking two cards
+	 		currentElements = [];
+	 	} else {
+	 		for (let i = 0; i <= currentElements.length; i++) {
+	 			let currentIndex = currentElements[i];
+	 			currentIndex.className += ' mismatch';
+	 		}
+	 		currentElements = [];
+	 		console.log(currentElements.length);
+	 	}
+	} 
+}
+
 // * set up the event listener for a card. If a card is clicked:
 let deckClassElements = document.getElementsByClassName('card');
 Array.from(deckClassElements).forEach(function(element) {
 	element.addEventListener('click', function whenClicked() {
+		// displays number of moves player has made
+		moveCounter();
 		// display the card's symbol 
 		element.classList.add('open');
+		element.classList.add('show');
 		// add the card to a *list* of "open" cards
-		openCards.push(element.querySelector('i').className;
-		// openCards += element;
-		// if (openCards.length === 2) {
-		// 	if(openCards[0] === openCards[1]) {
-		// 		console.log('these cards are matched ' + openCards);
-		// 	}
-		// } 
+		openCards.push(element.querySelector('i').className);
+		currentElements.push(element);
+		matchCheck();
+			
 	});
+
 });
  // 	
  // *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- // *  - if the list already has another card, check to see if the two cards match
  // *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  // *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  // *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
