@@ -7,7 +7,7 @@ const cardArray = [
 	'<i class = "fa fa-diamond"></i>',
 	'<i class = "fa fa-paper-plane-o"></i>',
 	'<i class = "fa fa-paper-plane-o"></i>',
-	'<i class = "fa fa-anchor"> </i>',
+	'<i class = "fa fa-anchor"></i>',
 	'<i class = "fa fa-anchor"></i>',
 	'<i class = "fa fa-bolt"></i>',
 	'<i class = "fa fa-bolt"></i>',
@@ -29,7 +29,10 @@ const cardArray = [
  */
 function display() {
 	shuffledCardArray = shuffle(cardArray);
+
 }
+
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
