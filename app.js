@@ -63,6 +63,14 @@ function cardActions(card) {
 		card.className += ' show';
 		// add card to list of open cards
 		openCards.push(card);
+		if(openCards.length === 2) {
+			if(openCards[0].innerHTML === openCards[1].innerHTML) {
+				console.log('match');
+			} else {
+				console.log('these dont match');
+				console.log(openCards);
+			}
+		}
 	}
 }
 
@@ -75,7 +83,7 @@ let openCards = [];
 /*
  * set up the event listener for a card. If a card is clicked:
  *  + display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ *  + add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
