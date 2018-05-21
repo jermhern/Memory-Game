@@ -57,7 +57,10 @@ function shuffle(array) {
     return array;
 }
 
-
+function cardActions(card) {
+	card.className += ' open';
+	card.className += ' show';
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -68,3 +71,13 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+// * set up the event listener for a card. If a card is clicked:
+let cardElements = document.querySelector('.deck').querySelectorAll('.card');
+console.log(cardElements);
+Array.from(cardElements).forEach(function(element) {
+	element.addEventListener('click', function() {
+		// display the card's symbol 
+		cardActions(element);
+	});
+});
