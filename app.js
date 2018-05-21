@@ -18,21 +18,29 @@ const cardArray = [
 	'<i class = "fa fa-bicycle"></i>',
 	'<i class = "fa fa-bicycle"></i>',
 	'<i class = "fa fa-bomb"></i>',
-	'<i class = "fa fa-bomb"></i>',
-]
+	'<i class = "fa fa-bomb"></i>'
+];
 
 /*
  * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
+ *   + shuffle the list of cards using the provided "shuffle" method below
+ *   + loop through each card and create its HTML
+ *   + add each card's HTML to the page
  */
 function display() {
-	shuffledCardArray = shuffle(cardArray);
+	const fragment = document.createDocumentFragment();
 
+	shuffledCardArray = shuffle(cardArray);
+	shuffledCardArray.forEach(function(element) {
+		let liElement = document.createElement('li');
+		liElement.setAttribute('class', 'card');
+		liElement.insertAdjacentHTML('afterbegin', element);
+		fragment.appendChild(liElement);
+	});
+	document.querySelector('.deck').appendChild(fragment);
 }
 
-
+display();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
