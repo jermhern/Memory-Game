@@ -40,8 +40,6 @@ function display() {
 	document.querySelector('.deck').appendChild(fragment);
 }
 
-display();
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -58,12 +56,25 @@ function shuffle(array) {
 }
 
 function cardActions(card) {
-	card.className += ' open';
-	card.className += ' show';
+	// prevent function from adding two classes over and over again 
+	if (!(card.classList.contains('open'))) {
+		// display the card's symbol 
+		card.className += ' open';
+		card.className += ' show';
+		// add card to list of open cards
+		openCards.push(card);
+	}
 }
+
+// display cards on page in random order, flipped.
+display();
+
+//initialize empty open card list
+let openCards = [];
+
 /*
  * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
+ *  + display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
@@ -74,10 +85,8 @@ function cardActions(card) {
 
 // * set up the event listener for a card. If a card is clicked:
 let cardElements = document.querySelector('.deck').querySelectorAll('.card');
-console.log(cardElements);
 Array.from(cardElements).forEach(function(element) {
 	element.addEventListener('click', function() {
-		// display the card's symbol 
 		cardActions(element);
 	});
 });
