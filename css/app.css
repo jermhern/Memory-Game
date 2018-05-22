@@ -95,7 +95,7 @@ h1 {
 
 .deck .card.mismatch {
     cursor: default;
-    background: #ff3333;
+    background: rgb(249, 35, 87);
     font-size: 33px;
 }
 
