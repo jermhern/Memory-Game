@@ -83,17 +83,17 @@ function cardActions(card) {
 				// add one to the moves
 				moveCount++;
 				document.querySelector('.moves').innerHTML = moveCount;
-				// if moves are at or above 10 take away a star
+				// take away a star
 				const starClass = document.querySelector('.stars');
-				if (moveCount >= 10){
+				if (moveCount >= 12){
 					starClass.removeChild(starClass.childNodes[0]);
 				}
-				// if moves are above 14 take away a star
-				else if (moveCount >= 14){
+				// take away a star
+				else if (moveCount >= 16){
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// remove last star 
-				else if (moveCount > 17) {
+				else if (moveCount > 20) {
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// empty open cards
@@ -111,20 +111,20 @@ function cardActions(card) {
 						card.classList.remove('show');
 					}, 1200);
 				});
-				// add one to moves
+				// add one to the moves
 				moveCount++;
 				document.querySelector('.moves').innerHTML = moveCount;
-				// if moves are at or above 10 take away a star
+				// take away a star
 				const starClass = document.querySelector('.stars');
-				if (moveCount >= 10){
+				if (moveCount >= 12){
 					starClass.removeChild(starClass.childNodes[0]);
 				}
-				// if moves are above 14 take away a star
-				else if (moveCount > 14){
+				// take away a star
+				else if (moveCount >= 16){
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// remove last star 
-				else if (moveCount > 17) {
+				else if (moveCount > 20) {
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// empty open cards
