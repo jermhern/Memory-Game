@@ -61,6 +61,11 @@ display();
 //initialize empty open card list
 let openCards = [];
 
+function incrementSeconds() {
+	seconds += 1;
+	timeElement.innerText = seconds;
+}
+
 function cardActions(card) {
 	// prevent function from adding two classes over and over again 
 	if (!(card.classList.contains('open'))) {
@@ -84,22 +89,18 @@ function cardActions(card) {
 				// take away a star
 				const starClass = document.querySelector('.stars');
 				if (moveCount >= 12){
-					starClass.removeChild(starClass.childNodes[0]);
+					starClass.removeChild(starClass.children[0]);
 				}
 				// take away a star
-				else if (moveCount >= 18){
-					starClass.removeChild(starClass.childNodes[0]);
-				}
-				// remove last star 
-				else if (moveCount > 24) {
-					starClass.removeChild(starClass.childNodes[0]);
+				else if (moveCount < 17 && moveCount >= 16){
+					starClass.removeChild(starClass.children[0]);
 				}
 				// empty open cards
 				openCards = [];
 				// add one to cards matched
 				cardsMatched++;
 				if (cardsMatched === 8) {
-					alert('Congratulations! You won the game.')
+					alert('Congratulations! You won the game in ' + seconds + ' seconds!')
 				}
 			} else {
 				// play fail sound
@@ -123,15 +124,11 @@ function cardActions(card) {
 				// take away a star
 				const starClass = document.querySelector('.stars');
 				if (moveCount >= 12){
-					starClass.removeChild(starClass.childNodes[0]);
+					starClass.removeChild(starClass.children[0]);
 				}
 				// take away a star
-				else if (moveCount >= 16){
-					starClass.removeChild(starClass.childNodes[0]);
-				}
-				// remove last star 
-				else if (moveCount > 20) {
-					starClass.removeChild(starClass.childNodes[0]);
+				else if ( moveCount < 17 && moveCount >= 16){
+					starClass.removeChild(starClass.children[0]);
 				}
 				// empty open cards
 				openCards = [];
@@ -163,6 +160,13 @@ let popSound = new Audio('mp3/pop.mp3');
 // sounds when user misses a pair or makes a pair 
 let pairSound = new Audio('mp3/point.mp3');
 let noPairSound = new Audio('mp3/nopoint.mp3');
+
+// set up for timer
+let seconds = 0;
+const timeElement = document.querySelector('.timer');
+
+// start timer
+const start = setInterval(incrementSeconds, 1000);
 
 // * set up the event listener for a card. If a card is clicked:
 let cardElements = document.querySelector('.deck').querySelectorAll('.card');
