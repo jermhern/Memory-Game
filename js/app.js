@@ -88,11 +88,11 @@ function cardActions(card) {
 				document.querySelector('.moves').innerHTML = moveCount;
 				// take away a star
 				const starClass = document.querySelector('.stars');
-				if (moveCount === 12){
+				if (moveCount === 15){
 					starClass.removeChild(starClass.children[0]);
 				}
 				// take away a star
-				else if (moveCount === 16){
+				else if (moveCount === 19){
 					starClass.removeChild(starClass.children[0]);
 				}
 				// empty open cards
@@ -100,7 +100,19 @@ function cardActions(card) {
 				// add one to cards matched
 				cardsMatched++;
 				if (cardsMatched === 8) {
-					alert('Congratulations! You won the game in ' + seconds + ' seconds!')
+					alert('You won the game in ' + seconds + ' seconds!\n');
+					timeElement.innerText = 0;
+					let playAgain = prompt('Want to play again? (Y/N)');
+
+					if (playAgain === 'Y') {
+						location.reload();
+					} 
+					else if (playAgain === 'N') {
+						alert('Thank you for playing!');
+					} else {
+						alert('Dont know what you said...');
+						location.reload();
+					}
 				}
 			} else {
 				// play fail sound
@@ -123,11 +135,11 @@ function cardActions(card) {
 				document.querySelector('.moves').innerHTML = moveCount;
 				// take away a star
 				const starClass = document.querySelector('.stars');
-				if (moveCount === 12){
+				if (moveCount === 15){
 					starClass.removeChild(starClass.children[0]);
 				}
 				// take away a star
-				else if ( moveCount === 16){
+				else if ( moveCount === 19){
 					starClass.removeChild(starClass.children[0]);
 				}
 				// empty open cards
@@ -145,7 +157,7 @@ function cardActions(card) {
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    - if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
  
 // keep track of moves to show the user
