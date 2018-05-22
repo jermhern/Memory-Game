@@ -83,24 +83,16 @@ function cardActions(card) {
 				Array.from(openCards).forEach(function(card){
 					card.className += ' match';
 				});
-				// add one to the moves
-				moveCount++;
-				document.querySelector('.moves').innerHTML = moveCount;
-				// take away a star
-				const starClass = document.querySelector('.stars');
-				if (moveCount === 15){
-					starClass.removeChild(starClass.children[0]);
-				}
-				// take away a star
-				else if (moveCount === 19){
-					starClass.removeChild(starClass.children[0]);
-				}
+
 				// empty open cards
 				openCards = [];
+
 				// add one to cards matched
 				cardsMatched++;
 				if (cardsMatched === 8) {
-					alert('You won the game in ' + seconds + ' seconds!\n');
+					alert('You won the game in ' + seconds + ' seconds!');
+					alert('You finished in ' + moveCount + ' moves!');
+					alert('That means you earned ' + starCnt + ' star(s)!');
 					timeElement.innerText = 0;
 					let playAgain = prompt('Want to play again? (Y/N)');
 
@@ -122,6 +114,7 @@ function cardActions(card) {
 					// add the mismatch class
 					card.className += ' mismatch';
 				});
+				
 				// flip cards around
 				Array.from(openCards).forEach(function(card) {
 					window.setTimeout(() => {
@@ -130,20 +123,23 @@ function cardActions(card) {
 						card.classList.remove('show');
 					}, 1200);
 				});
-				// add one to the moves
-				moveCount++;
-				document.querySelector('.moves').innerHTML = moveCount;
-				// take away a star
-				const starClass = document.querySelector('.stars');
-				if (moveCount === 15){
-					starClass.removeChild(starClass.children[0]);
-				}
-				// take away a star
-				else if ( moveCount === 19){
-					starClass.removeChild(starClass.children[0]);
-				}
+				
 				// empty open cards
 				openCards = [];
+			}
+			// add one to the moves
+			moveCount++;
+			document.querySelector('.moves').innerHTML = moveCount;
+			// take away a star
+			const starClass = document.querySelector('.stars');
+			if (moveCount === 15){
+				starClass.removeChild(starClass.children[0]);
+				starCnt--;
+			}
+			// take away a star
+			else if ( moveCount === 19){
+				starClass.removeChild(starClass.children[0]);
+				starCnt--;
 			}
 		}
 	}
@@ -179,6 +175,9 @@ const timeElement = document.querySelector('.timer');
 
 // start timer
 const start = setInterval(incrementSeconds, 1000);
+
+// star count
+let starCnt = 3;
 
 // * set up the event listener for a card. If a card is clicked:
 let cardElements = document.querySelector('.deck').querySelectorAll('.card');
