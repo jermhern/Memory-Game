@@ -87,11 +87,11 @@ function cardActions(card) {
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// take away a star
-				else if (moveCount >= 16){
+				else if (moveCount >= 18){
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// remove last star 
-				else if (moveCount > 20) {
+				else if (moveCount > 24) {
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// empty open cards
