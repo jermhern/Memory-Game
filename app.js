@@ -55,7 +55,7 @@ function shuffle(array) {
     return array;
 }
 
-// display cards on page in random order, flipped.
+// display cards on page in random order.
 display();
 
 //initialize empty open card list
@@ -75,11 +75,6 @@ function cardActions(card) {
 				Array.from(openCards).forEach(function(card){
 					card.className += ' match';
 				});
-				// add one to cards matched
-				cardsMatched++;
-				if (cardsMatched === 8) {
-					alert('Congratulations! You won the game.')
-				}
 				// add one to the moves
 				moveCount++;
 				document.querySelector('.moves').innerHTML = moveCount;
@@ -98,6 +93,11 @@ function cardActions(card) {
 				}
 				// empty open cards
 				openCards = [];
+				// add one to cards matched
+				cardsMatched++;
+				if (cardsMatched === 8) {
+					alert('Congratulations! You won the game.')
+				}
 			} else {
 				Array.from(openCards).forEach(function(card) {
 					// add the mismatch class
@@ -144,10 +144,7 @@ function cardActions(card) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    - if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
-// reset button 
-
-
+ 
 // keep track of moves to show the user
 let moveCount = 0;
 
