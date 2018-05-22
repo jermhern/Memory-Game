@@ -81,24 +81,30 @@ function cardActions(card) {
 				// if moves are above 12 take away a star
 				console.log('match');
 				// empty open cards
+				openCards = [];
 			} else {
-				// add the mismatch class
-				Array.from(openCards).forEach(function(card){
+				Array.from(openCards).forEach(function(card) {
+					// add the mismatch class
 					card.className += ' mismatch';
 				});
-				// wait 1 second
-				delay(1000);
-				// flip the cards around
-				Array.from(openCards).forEach(function(card) {
-					card.className -= ' open';
-					card.className -= ' show';
-				})
+				// flip cards around
+				function flip() {
+					Array.from(openCards).forEach(function(card) {
+						window.setTimeout(() => {
+							card.classList.remove('mismatch')
+							card.classList.remove('open');
+							card.classList.remove('show');
+						}, 1400);
+					});
+				}
+				flip();
 				// add one to moves
 				// if moves are above 8 take away a star 
 				// if moves are above 9 take away a star
 				// if moves are above 12 take away a star
 				console.log('these dont match');
 				// empty open cards
+				openCards = [];
 			}
 		}
 	}
@@ -114,6 +120,9 @@ function cardActions(card) {
  *    - increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    - if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+// keep track of moves to show the user
+let moveCount = 0;
 
 // * set up the event listener for a card. If a card is clicked:
 let cardElements = document.querySelector('.deck').querySelectorAll('.card');
