@@ -83,14 +83,13 @@ function cardActions(card) {
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// if moves are above 14 take away a star
-				else if (moveCount > 14){
+				else if (moveCount >= 14){
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// remove last star 
-				else {
+				else if (moveCount > 17) {
 					starClass.removeChild(starClass.childNodes[0]);
 				}
-				console.log('match');
 				// empty open cards
 				openCards = [];
 			} else {
@@ -109,6 +108,9 @@ function cardActions(card) {
 				// add one to moves
 				moveCount++;
 				document.querySelector('.moves').innerHTML = moveCount;
+
+				// if moves are at or above 10 take away a star
+				const starClass = document.querySelector('.stars');
 				if (moveCount >= 10){
 					starClass.removeChild(starClass.childNodes[0]);
 				}
@@ -117,10 +119,9 @@ function cardActions(card) {
 					starClass.removeChild(starClass.childNodes[0]);
 				}
 				// remove last star 
-				else {
+				else if (moveCount > 17) {
 					starClass.removeChild(starClass.childNodes[0]);
 				}
-				console.log('these dont match');
 				// empty open cards
 				openCards = [];
 			}
@@ -139,6 +140,9 @@ function cardActions(card) {
  *    - if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+// reset button 
+
+
 // keep track of moves to show the user
 let moveCount = 0;
 
@@ -147,5 +151,8 @@ let cardElements = document.querySelector('.deck').querySelectorAll('.card');
 Array.from(cardElements).forEach(function(element) {
 	element.addEventListener('click', function() {
 		cardActions(element);
+		document.querySelector('.restart').addEventListener('click', function() {
+			location.reload();
+		});
 	});
 });
