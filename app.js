@@ -75,6 +75,11 @@ function cardActions(card) {
 				Array.from(openCards).forEach(function(card){
 					card.className += ' match';
 				});
+				// add one to cards matched
+				cardsMatched++;
+				if (cardsMatched === 8) {
+					alert('Congratulations! You won the game.')
+				}
 				// add one to the moves
 				moveCount++;
 				// if moves are at or above 10 take away a star
@@ -108,7 +113,6 @@ function cardActions(card) {
 				// add one to moves
 				moveCount++;
 				document.querySelector('.moves').innerHTML = moveCount;
-
 				// if moves are at or above 10 take away a star
 				const starClass = document.querySelector('.stars');
 				if (moveCount >= 10){
@@ -145,6 +149,9 @@ function cardActions(card) {
 
 // keep track of moves to show the user
 let moveCount = 0;
+
+// keep track of cards matched
+let cardsMatched = 0;
 
 // * set up the event listener for a card. If a card is clicked:
 let cardElements = document.querySelector('.deck').querySelectorAll('.card');
