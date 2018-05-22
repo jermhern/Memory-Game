@@ -76,6 +76,7 @@ function cardActions(card) {
 					card.className += ' match';
 				});
 				// add one to the moves
+				moveCount++;
 				// if moves are above 8 take away a star 
 				// if moves are above 9 take away a star
 				// if moves are above 12 take away a star
@@ -99,6 +100,7 @@ function cardActions(card) {
 				}
 				flip();
 				// add one to moves
+				moveCount++;
 				// if moves are above 8 take away a star 
 				// if moves are above 9 take away a star
 				// if moves are above 12 take away a star
