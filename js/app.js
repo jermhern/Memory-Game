@@ -71,6 +71,9 @@ function cardActions(card) {
 		openCards.push(card);
 		if(openCards.length === 2) {
 			if(openCards[0].innerHTML === openCards[1].innerHTML) {
+				// play pair sound
+				pairSound.play();
+
 				// add the match class
 				Array.from(openCards).forEach(function(card){
 					card.className += ' match';
@@ -99,6 +102,9 @@ function cardActions(card) {
 					alert('Congratulations! You won the game.')
 				}
 			} else {
+				// play fail sound
+				noPairSound.play();
+
 				Array.from(openCards).forEach(function(card) {
 					// add the mismatch class
 					card.className += ' mismatch';
@@ -151,10 +157,18 @@ let moveCount = 0;
 // keep track of cards matched
 let cardsMatched = 0;
 
+// access pop sound affect
+let popSound = new Audio('mp3/pop.mp3');
+
+// sounds when user misses a pair or makes a pair 
+let pairSound = new Audio('mp3/point.mp3');
+let noPairSound = new Audio('mp3/nopoint.mp3');
+
 // * set up the event listener for a card. If a card is clicked:
 let cardElements = document.querySelector('.deck').querySelectorAll('.card');
 Array.from(cardElements).forEach(function(element) {
 	element.addEventListener('click', function() {
+		popSound.play();
 		cardActions(element);
 		document.querySelector('.restart').addEventListener('click', function() {
 			location.reload();
