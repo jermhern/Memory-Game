@@ -114,7 +114,7 @@ function cardActions(card) {
 					// add the mismatch class
 					card.className += ' mismatch';
 				});
-				
+
 				// flip cards around
 				Array.from(openCards).forEach(function(card) {
 					window.setTimeout(() => {
@@ -132,12 +132,7 @@ function cardActions(card) {
 			document.querySelector('.moves').innerHTML = moveCount;
 			// take away a star
 			const starClass = document.querySelector('.stars');
-			if (moveCount === 15){
-				starClass.removeChild(starClass.children[0]);
-				starCnt--;
-			}
-			// take away a star
-			else if ( moveCount === 19){
+			if (moveCount === 15 || moveCount === 19){
 				starClass.removeChild(starClass.children[0]);
 				starCnt--;
 			}
