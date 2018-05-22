@@ -77,6 +77,7 @@ function cardActions(card) {
 				});
 				// add one to the moves
 				moveCount++;
+				document.querySelector('.moves').innerHTML = moveCount;
 				// if moves are above 8 take away a star 
 				// if moves are above 9 take away a star
 				// if moves are above 12 take away a star
@@ -89,18 +90,16 @@ function cardActions(card) {
 					card.className += ' mismatch';
 				});
 				// flip cards around
-				function flip() {
-					Array.from(openCards).forEach(function(card) {
-						window.setTimeout(() => {
-							card.classList.remove('mismatch')
-							card.classList.remove('open');
-							card.classList.remove('show');
-						}, 1400);
-					});
-				}
-				flip();
+				Array.from(openCards).forEach(function(card) {
+					window.setTimeout(() => {
+						card.classList.remove('mismatch')
+						card.classList.remove('open');
+						card.classList.remove('show');
+					}, 1200);
+				});
 				// add one to moves
 				moveCount++;
+				document.querySelector('.moves').innerHTML = moveCount;
 				// if moves are above 8 take away a star 
 				// if moves are above 9 take away a star
 				// if moves are above 12 take away a star
