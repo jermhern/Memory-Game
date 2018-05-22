@@ -82,6 +82,8 @@ function cardActions(card) {
 				}
 				// add one to the moves
 				moveCount++;
+				document.querySelector('.moves').innerHTML = moveCount;
+
 				// if moves are at or above 10 take away a star
 				const starClass = document.querySelector('.stars');
 				if (moveCount >= 10){
