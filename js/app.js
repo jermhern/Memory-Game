@@ -88,11 +88,11 @@ function cardActions(card) {
 				document.querySelector('.moves').innerHTML = moveCount;
 				// take away a star
 				const starClass = document.querySelector('.stars');
-				if (moveCount >= 12){
+				if (moveCount === 12){
 					starClass.removeChild(starClass.children[0]);
 				}
 				// take away a star
-				else if (moveCount < 17 && moveCount >= 16){
+				else if (moveCount === 16){
 					starClass.removeChild(starClass.children[0]);
 				}
 				// empty open cards
@@ -123,11 +123,11 @@ function cardActions(card) {
 				document.querySelector('.moves').innerHTML = moveCount;
 				// take away a star
 				const starClass = document.querySelector('.stars');
-				if (moveCount >= 12){
+				if (moveCount === 12){
 					starClass.removeChild(starClass.children[0]);
 				}
 				// take away a star
-				else if ( moveCount < 17 && moveCount >= 16){
+				else if ( moveCount === 16){
 					starClass.removeChild(starClass.children[0]);
 				}
 				// empty open cards
